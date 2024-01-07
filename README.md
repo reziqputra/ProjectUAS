@@ -27,3 +27,7 @@ Pengguna dapat menambahkan jadwal baru dan menambahkan instuktur.
 - Klik pada tabel Jadwal yang telah di buat untuk membuka detail jadwal;
 Update Jadwal : Pengguna dapat memperbarui informasi Jadwal.
 Hapus Jadwal : Menghapus Jadwal yang dipilih.
+
+
+![image](https://github.com/reziqputra/ProjectUAS/assets/95918166/c910eff2-cdb1-4621-bec1-e5c976e2fba0)
+
