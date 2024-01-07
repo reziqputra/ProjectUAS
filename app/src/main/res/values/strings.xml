@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">ProjectUAS</string>
+    <string name="entry_jadwal">Tambah jadwal</string>
+    <string name="deskripsi_no_item">Tidak ada data jadwal. Tap + untuk menambah data</string>
+    <string name="nama">Nama Instruktur*</string>
+    <string name="alamat">Alamat jadwal*</string>
+    <string name="telpon">Telpon Instruktur</string>
+    <string name="tgl">Tanggal    :</string>
+    <string name="waktu">Waktu    :</string>
+    <string name="instruktur">Instruktur    :</string>
+    <string name="required_field">Required fields</string>
+    <string name="btn_submit">Submit</string>
+    <string name="detail_jadwal">Detail jadwal</string>
+    <string name="edit_jadwal">Edit jadwal</string>
+    <string name="back">Back</string>
+    <string name="yes">Ya</string>
+    <string name="no">Tidak</string>
+    <string name="delete">Hapus</string>
+    <string name="update">Edit</string>
+    <string name="attention">Perhatian</string>
+    <string name="tanya">Apakah anda yakin menghapus ini ?</string>
 </resources>
