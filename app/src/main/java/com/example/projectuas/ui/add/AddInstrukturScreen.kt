@@ -29,8 +29,8 @@ import com.example.projectuas.ui.PenyediaViewModel
 import kotlinx.coroutines.launch
 
 object DestinasiInsForm : DestinasiNavigasi {
-    override val route = "item_entry"
-    override val titleRes = "Entry Siswa"
+    override val route = "item_entry_INS"
+    override val titleRes = "Entry Instruktur"
 }
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

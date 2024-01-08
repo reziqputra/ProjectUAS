@@ -8,6 +8,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.projectuas.ui.add.AddInstrukturScreen
+import com.example.projectuas.ui.add.DestinasiInsForm
 import com.example.projectuas.ui.add.DestinasiJadwalForm
 import com.example.projectuas.ui.add.DestinasiJadwalForm.AddJadwalScreen
 import com.example.projectuas.ui.detail.DetailDestination
@@ -17,18 +19,22 @@ import com.example.projectuas.ui.home.HomeScreen
 
 @Composable
 fun PengelolaHalaman(navController: NavHostController = rememberNavController()) {
-    
+
     NavHost(
         navController = navController,
-        startDestination = DestinasiHome.route,
+        startDestination = DestinasiInsForm.route,
         modifier = Modifier
-    ){
-        composable(DestinasiHome.route){
-            HomeScreen(navigateToItemEntry = {navController.navigate(DestinasiJadwalForm.route)},
+    ) {
+        composable(DestinasiHome.route) {
+            HomeScreen(navigateToItemEntry = { navController.navigate(DestinasiJadwalForm.route) },
+                navigateToInsForm = { navController.navigate(DestinasiInsForm.route) },
                 onDetailClick = { itemId ->
                     navController.navigate("${DetailDestination.route}/$itemId")
                     println("itemId: $itemId")
                 })
+        }
+        composable(DestinasiInsForm.route){
+            AddInstrukturScreen(navigateBack = { navController.popBackStack() })
         }
 
         composable(DestinasiJadwalForm.route) {

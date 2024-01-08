@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "785870804028",
+    "project_id": "projectuas-51b25",
+    "storage_bucket": "projectuas-51b25.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:785870804028:android:0f59a10d2c08fd2300df39",
+        "android_client_info": {
+          "package_name": "com.example.projectuas"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwMcmLq5Xf-pl9tfj11kr7JN1Qu5_2NPI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
