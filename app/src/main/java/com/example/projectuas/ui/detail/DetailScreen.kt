@@ -80,7 +80,7 @@ fun DetailScreen(
                     contentDescription = "",
                 )
             }
-        }, modifier = modifier
+        }, modifier = modifier.background(Color(0xFFABB28D)),
     ) { innerPadding ->
         ItemDetailsBody(
             detailUIState = uiState.value,
