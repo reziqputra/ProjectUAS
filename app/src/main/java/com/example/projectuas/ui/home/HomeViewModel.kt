@@ -2,8 +2,10 @@ package com.example.projectuas.ui.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.projectuas.data.InstrukturRepositori
 import com.example.projectuas.data.JadwalRepositori
 import com.example.projectuas.model.Jadwal
+import com.example.projectuas.ui.HomeInsUIState
 import com.example.projectuas.ui.HomeUIState
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.SharingStarted
@@ -18,7 +20,7 @@ sealed class JadwalUIState {
     object Loading : JadwalUIState()
 }
 
-class HomeViewModel(private val jadwalRepositori: JadwalRepositori) : ViewModel() {
+class HomeViewModel(private val jadwalRepositori: JadwalRepositori, private val instrukturRepositori: InstrukturRepositori) : ViewModel() {
 
     companion object {
         private const val TIMEOUT_MILLIS = 5_000L
@@ -32,6 +34,16 @@ class HomeViewModel(private val jadwalRepositori: JadwalRepositori) : ViewModel(
             scope = viewModelScope,
             started = SharingStarted.WhileSubscribed(TIMEOUT_MILLIS),
             initialValue = HomeUIState()
+
+        )
+    val homeInsUIState: StateFlow<HomeInsUIState> = instrukturRepositori.getAll()
+        .filterNotNull()
+        .map {
+            HomeInsUIState (listInstruktur = it.toList(), it.size ) }
+        .stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(TIMEOUT_MILLIS),
+            initialValue = HomeInsUIState()
 
         )
 

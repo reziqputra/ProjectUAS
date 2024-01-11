@@ -1,11 +1,12 @@
 package com.example.projectuas.ui.add
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -17,8 +18,8 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
-import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.projectuas.navigation.DestinasiNavigasi
@@ -27,6 +28,7 @@ import com.example.projectuas.ui.AddUIState
 import com.example.projectuas.ui.JadwalTopAppBar
 import com.example.projectuas.ui.PenyediaViewModel
 import kotlinx.coroutines.launch
+
 
 object DestinasiJadwalForm : DestinasiNavigasi {
     override val route = "item_entry"
@@ -68,7 +70,8 @@ object DestinasiJadwalForm : DestinasiNavigasi {
                     .padding(innerPadding)
                     .verticalScroll(rememberScrollState())
                     .fillMaxWidth()
-            )
+                    .background(Color(0xFFABB28D)),
+                )
         }
     }
 
@@ -81,8 +84,9 @@ object DestinasiJadwalForm : DestinasiNavigasi {
     ) {
         Column(
             verticalArrangement = Arrangement.spacedBy(12.dp),
-            modifier = modifier.padding(12.dp)
-        ) {
+            modifier = modifier
+                .padding(12.dp)
+            ) {
             FormInput(
                 addEvent = addUIState.addEvent,
                 onValueChange = onSiswaValueChange,
@@ -114,10 +118,13 @@ object DestinasiJadwalForm : DestinasiNavigasi {
                 value = addEvent.tanggal,
                 onValueChange = { onValueChange(addEvent.copy(tanggal = it)) },
                 label = { Text("tanggal") },
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clickable { },
                 enabled = enabled,
-                singleLine = true
-            )
+                singleLine = true,
+
+                )
             OutlinedTextField(
                 value = addEvent.waktu,
                 onValueChange = { onValueChange(addEvent.copy(waktu = it)) },
@@ -145,4 +152,5 @@ object DestinasiJadwalForm : DestinasiNavigasi {
 
         }
     }
+
 }

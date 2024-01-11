@@ -25,7 +25,7 @@ interface InstrukturRepositori {
 class InstrukturRepositoriImpl(private val firestore: FirebaseFirestore): InstrukturRepositori{
     override fun getAll(): Flow<List<Instruktur>> = flow{
         val snapshot = firestore.collection("Instruktur")
-            .orderBy("tanggal", Query.Direction.ASCENDING)
+            .orderBy("nama", Query.Direction.ASCENDING)
             .get()
             .await()
         val Instruktur = snapshot.toObjects(Instruktur::class.java)

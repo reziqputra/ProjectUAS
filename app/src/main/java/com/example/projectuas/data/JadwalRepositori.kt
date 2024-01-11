@@ -15,13 +15,13 @@ import kotlinx.coroutines.tasks.await
 interface JadwalRepositori {
     fun getAll(): Flow<List<Jadwal>>
 
-    suspend fun save(Jadwal: Jadwal): String
+    suspend fun save(jadwal: Jadwal): String
 
-    suspend fun update(Jadwal: Jadwal)
+    suspend fun update(jadwal: Jadwal)
 
-    suspend fun delete(JadwalId: String)
+    suspend fun delete(jadwalId: String)
 
-    fun getJadwalById(JadwalId: String): Flow<Jadwal>
+    fun getJadwalById(jadwalId: String): Flow<Jadwal>
 }
 class JadwalRepositoriImpl(private val firestore: FirebaseFirestore): JadwalRepositori{
     override fun getAll(): Flow<List<Jadwal>> = flow{
@@ -33,12 +33,12 @@ class JadwalRepositoriImpl(private val firestore: FirebaseFirestore): JadwalRepo
         emit(Jadwal)
     }.flowOn(Dispatchers.IO)
 
-    override suspend fun save(Jadwal: Jadwal): String {
+    override suspend fun save(jadwal: Jadwal): String {
         return try {
-            val documentReference = firestore.collection("Jadwal").add(Jadwal).await()
+            val documentReference = firestore.collection("Jadwal").add(jadwal).await()
 
             firestore.collection("Jadwal").document(documentReference.id)
-                .set(Jadwal.copy(id = documentReference.id))
+                .set(jadwal.copy(id = documentReference.id))
             "Berhasil + ${documentReference.id}"
         }catch (e:Exception){
             Log.w(ContentValues.TAG, "Error adding document",e)
@@ -46,17 +46,17 @@ class JadwalRepositoriImpl(private val firestore: FirebaseFirestore): JadwalRepo
         }
     }
 
-    override suspend fun update(Jadwal: Jadwal) {
-        firestore.collection("Jadwal").document(Jadwal.id).set(Jadwal).await()
+    override suspend fun update(jadwal: Jadwal) {
+        firestore.collection("Jadwal").document(jadwal.id).set(jadwal).await()
     }
 
-    override suspend fun delete(JadwalId: String) {
-        firestore.collection("Jadwal").document(JadwalId).delete().await()
+    override suspend fun delete(jadwalId: String) {
+        firestore.collection("Jadwal").document(jadwalId).delete().await()
     }
 
-    override fun getJadwalById(JadwalId: String): Flow<Jadwal> {
+    override fun getJadwalById(jadwalId: String): Flow<Jadwal> {
         return flow {
-            val snapshot = firestore.collection("Jadwal").document(JadwalId).get().await()
+            val snapshot = firestore.collection("Jadwal").document(jadwalId).get().await()
             val Jadwal = snapshot.toObject(Jadwal::class.java)
             emit(Jadwal!!)
         }.flowOn(Dispatchers.IO)

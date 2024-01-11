@@ -7,8 +7,12 @@ import androidx.lifecycle.viewmodel.CreationExtras
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.projectuas.application
+import com.example.projectuas.data.InstrukturRepositori
 import com.example.projectuas.ui.add.AddViewModel
+import com.example.projectuas.ui.detail.DetailInsViewModel
 import com.example.projectuas.ui.detail.DetailViewModel
+import com.example.projectuas.ui.edit.EditInsViewModel
+import com.example.projectuas.ui.edit.EditViewModel
 import com.example.projectuas.ui.home.HomeViewModel
 
 fun CreationExtras.aplikasJadwal(): application =
@@ -24,11 +28,18 @@ object PenyediaViewModel{
         }
 
         initializer {
-            HomeViewModel(aplikasJadwal().container.jadwalRepositori)
+            HomeViewModel(aplikasJadwal().container.jadwalRepositori,aplikasInstruktur().container.instrukturRepositori )
         }
 
         initializer {
-            DetailViewModel(createSavedStateHandle(),aplikasJadwal().container.jadwalRepositori,aplikasInstruktur().container.instrukturRepositori)
+            DetailViewModel(createSavedStateHandle(),aplikasJadwal().container.jadwalRepositori)
+        }
+        initializer { DetailInsViewModel(createSavedStateHandle(),aplikasInstruktur().container.instrukturRepositori) }
+        initializer {
+            EditViewModel(createSavedStateHandle(),aplikasJadwal().container.jadwalRepositori)
+        }
+        initializer {
+            EditInsViewModel(createSavedStateHandle(),aplikasInstruktur().container.instrukturRepositori)
         }
     }
 }

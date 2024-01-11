@@ -75,3 +75,8 @@ fun Instruktur.toDetailInstruktur(): AddInsEvent =
 fun Instruktur.toUIStateInstruktur(): AddInsUIState = AddInsUIState(
     addInsEvent = this.toDetailInstruktur()
 )
+
+data class HomeInsUIState(
+    val listInstruktur: List<Instruktur> = listOf(),
+    val dataLength: Int = 0
+)

@@ -1,5 +1,6 @@
 package com.example.projectuas.ui.detail
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -29,6 +30,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -53,7 +55,7 @@ fun DetailInsScreen(
     navigateToEditItem: (String) -> Unit,
     navigateBack: () -> Unit,
     modifier: Modifier = Modifier,
-    viewModel: DetailViewModel = viewModel(factory = PenyediaViewModel.Factory)
+    viewModel: DetailInsViewModel = viewModel(factory = PenyediaViewModel.Factory)
 ) {
     val uiInsState = viewModel.uiInsState.collectAsState()
     val coroutineScope = rememberCoroutineScope()
@@ -92,8 +94,8 @@ fun DetailInsScreen(
             },
             modifier = Modifier
                 .padding(innerPadding)
-                .verticalScroll(rememberScrollState()),
-
+                .verticalScroll(rememberScrollState())
+                .background(Color(0xFFABB28D)),
             )
     }
 }
