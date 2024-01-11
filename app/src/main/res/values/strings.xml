@@ -17,6 +17,7 @@
     <string name="no">Tidak</string>
     <string name="delete">Hapus</string>
     <string name="update">Edit</string>
+    <string name="next">Get Started</string>
     <string name="attention">Perhatian</string>
     <string name="tanya">Apakah anda yakin menghapus ini ?</string>
 </resources>

@@ -28,7 +28,7 @@ object PenyediaViewModel{
         }
 
         initializer {
-            DetailViewModel(createSavedStateHandle(),aplikasJadwal().container.jadwalRepositori)
+            DetailViewModel(createSavedStateHandle(),aplikasJadwal().container.jadwalRepositori,aplikasInstruktur().container.instrukturRepositori)
         }
     }
 }

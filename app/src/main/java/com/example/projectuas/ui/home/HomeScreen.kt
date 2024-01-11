@@ -63,15 +63,24 @@ fun HomeScreen(
             )
         },
         floatingActionButton = {
-            FloatingActionButton(
-                onClick = navigateToItemEntry,
+            Row {
+                FloatingActionButton(
+                    onClick = navigateToInsForm,
+                    shape = MaterialTheme.shapes.medium,
+                    modifier = Modifier.padding(18.dp)
+                ) {
+                    Text(text = "+ Instruktur")
+                }
+                FloatingActionButton(
+                        onClick = navigateToItemEntry,
                 shape = MaterialTheme.shapes.medium,
                 modifier = Modifier.padding(18.dp)
-            ) {
+                ) {
                 Icon(
                     imageVector = Icons.Default.Add,
                     contentDescription = ""
                 )
+            }
             }
         },
     ) { innerPadding ->

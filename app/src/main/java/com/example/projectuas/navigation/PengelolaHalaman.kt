@@ -15,6 +15,8 @@ import com.example.projectuas.ui.add.DestinasiJadwalForm.AddJadwalScreen
 import com.example.projectuas.ui.detail.DetailDestination
 import com.example.projectuas.ui.detail.DetailScreen
 import com.example.projectuas.ui.home.DestinasiHome
+import com.example.projectuas.ui.home.DestinationAwal
+import com.example.projectuas.ui.home.HalamanAwal
 import com.example.projectuas.ui.home.HomeScreen
 
 @Composable
@@ -22,9 +24,13 @@ fun PengelolaHalaman(navController: NavHostController = rememberNavController())
 
     NavHost(
         navController = navController,
-        startDestination = DestinasiInsForm.route,
+        startDestination = DestinationAwal.route,
         modifier = Modifier
     ) {
+
+        composable(DestinationAwal.route){
+            HalamanAwal (onNextButtonClicked = {navController.navigate(DestinasiHome.route)})
+        }
         composable(DestinasiHome.route) {
             HomeScreen(navigateToItemEntry = { navController.navigate(DestinasiJadwalForm.route) },
                 navigateToInsForm = { navController.navigate(DestinasiInsForm.route) },
@@ -55,7 +61,7 @@ fun PengelolaHalaman(navController: NavHostController = rememberNavController())
                     navigateBack = { navController.popBackStack() },
                     navigateToEditItem = {
                         //navController.navigate("${EditDestination.route}/$jadwalId")
-                        println("jadwalId: $jadwalId")
+                        //println("jadwalId: $jadwalId")
                     }
                 )
             }
